@@ -196,15 +196,15 @@ section{padding-block:84px}
 .slot .label{display:flex;align-items:center;gap:8px}
 .slot a{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
 .slot .mini{width:56px;height:56px}
-@media (max-width:860px){.roster{grid-template-columns:1fr}}
+@media (max-width:640px){.roster{grid-template-columns:1fr}}
 
 /* How */
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.how>div{display:grid;gap:10px;padding:28px;border-radius:26px;background:var(--sheet);border:1px solid var(--line);box-shadow:var(--soft);min-width:0;align-content:start}
+.how{display:grid;grid-template-columns:1fr;gap:14px;max-width:820px}
+.how>div{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;padding:24px 28px;border-radius:26px;background:var(--sheet);border:1px solid var(--line);box-shadow:var(--soft);min-width:0;align-content:start}
 .how .n{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:var(--brand);font-size:22px}
 .how h3{font-size:19px}
 .how p{color:var(--muted);font-size:16px}
-@media (max-width:760px){.how{grid-template-columns:1fr}}
+.how .n{grid-row:span 2}
 
 /* Contact */
 .contact-card{background:linear-gradient(135deg,#EEE8FF 0%,#FCE6F1 55%,#FFEDE3 100%);border:1px solid var(--line);border-radius:36px;padding:52px}
