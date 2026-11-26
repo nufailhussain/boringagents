@@ -34,8 +34,13 @@ p{margin:0}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .gutter{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.col{max-width:700px;margin:0 auto}
-.narrow{max-width:560px;margin:0 auto}
+.wrap{max-width:1180px;margin:0 auto}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 80px;align-items:start}
+.split .side{position:sticky;top:96px}
+.split .main{min-width:0}
+.split .main>.rows{margin-top:0}
+.big{font-size:clamp(22px,2.4vw,28px);font-weight:600;letter-spacing:-.02em;line-height:1.25}
+@media (max-width:900px){.split{grid-template-columns:1fr}.split .side{position:static}}
 .mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
 .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 
@@ -45,7 +50,7 @@ a{color:inherit}
 .announce a{text-decoration:none}
 .announce a:hover{text-decoration:underline}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1240px;margin:0 auto;padding-block:12px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1180px;margin:0 auto;padding-block:12px}
 .wordmark{font-size:21px;font-weight:500;letter-spacing:-.035em;text-decoration:none;white-space:nowrap}
 .cursor{display:inline-block;width:.32em;height:.82em;background:var(--accent);margin-left:5px;vertical-align:-.06em;animation:blink 1.1s step-end infinite}
 @keyframes blink{50%{opacity:0}}
@@ -65,8 +70,10 @@ section{padding-block:80px;border-bottom:1px solid var(--line)}
 
 /* Hero letter */
 .hero{padding-block:88px 84px}
-.hero h1{font-size:clamp(30px,4.2vw,40px)}
-.letter{display:grid;gap:18px;margin-top:28px;font-size:18px}
+.intro{max-width:548px;margin:0 auto}
+.hero{padding-block:96px 92px}
+.hero h1{font-size:18px;font-weight:600;line-height:1.5;letter-spacing:-.005em}
+.letter{display:grid;gap:26px;margin-top:26px;font-size:17.5px;line-height:1.55}
 .letter strong{font-weight:600}
 .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
 
@@ -82,14 +89,14 @@ h2{font-size:clamp(28px,3.6vw,36px)}
 .row .v .tag.live{background:var(--ink);border-color:var(--ink);color:#fff}
 .row .v a{color:var(--ink)}
 @media (max-width:600px){.row{grid-template-columns:1fr;gap:6px}}
-.lede{margin-top:16px;color:var(--muted);font-size:17px;max-width:60ch}
+.lede{margin-top:18px;color:var(--muted);font-size:17px;max-width:60ch}
 
 /* Example */
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .tab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:7px 12px;cursor:pointer}
 .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .brief{margin-top:18px;font-size:16px;color:var(--ink)}
-.lead{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 22px 8px}
+.lead{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 22px 8px}
 .lead-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
 .lead-head h3{font-size:17px;letter-spacing:-.01em}
 .lead-head p{font-size:14.5px;color:var(--muted);margin-top:2px}
@@ -105,7 +112,7 @@ h2{font-size:clamp(28px,3.6vw,36px)}
 /* Contact */
 .cta h2{font-size:clamp(28px,3.6vw,34px)}
 .cta .sub{margin-top:14px;font-size:17px}
-form.call{margin-top:34px;display:grid;gap:18px}
+form.call{display:grid;gap:18px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .field{display:grid;gap:6px;min-width:0}
 .field label,.field .fl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -119,11 +126,11 @@ form.call{margin-top:34px;display:grid;gap:18px}
 .chk input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
 .chk input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
 .form-msg{font-size:15px;border-left:3px solid var(--accent);padding:4px 0 4px 12px}
-.based{margin-top:28px;font-size:14px;color:var(--muted)}
+.based{margin-top:24px;font-size:14px;color:var(--muted)}
 @media (max-width:560px){.two{grid-template-columns:1fr}}
 
 footer{padding-block:22px}
-.foot{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted)}
+.foot{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}}
 </style>
 </head>
@@ -146,86 +153,107 @@ footer{padding-block:22px}
 
 <main id="top">
   <section class="hero gutter">
-    <div class="narrow">
-      <h1>What does a great sales team actually spend its day on?</h1>
-      <div class="letter">
-        <p>Not closing. Most of it is finding the right companies, digging up the right contact, and writing the same email to a hundred strangers.</p>
-        <p>That is the boring work. It is necessary, it is repetitive, and it keeps your best people away from the conversations that win deals.</p>
-        <p>So we built an Agent that does it all day, every day, without getting bored. It finds the businesses most likely to buy from you, learns everything about them, and reaches out in your name.</p>
-        <p><strong>Your team gets back to closing high-value deals.</strong></p>
-      </div>
-      <div class="ctas">
-        <a class="btn btn-dark" href="#contact">Book a free call</a>
-        <a class="btn btn-soft" href="#how">See how it works</a>
-      </div>
+    <div class="intro">
+        <h1>What does a great sales team actually spend its day on?</h1>
+        <div class="letter">
+          <p>Not closing. Most of it is finding the right companies, digging up the right contact, and writing the same email to a hundred strangers.</p>
+          <p>That is the boring work. It is necessary, it is repetitive, and it keeps your best people away from the conversations that win deals.</p>
+          <p>So we built an Agent that does it all day, every day, without getting bored. It finds the businesses most likely to buy from you, learns everything about them, and reaches out in your name.</p>
+          <p><strong>Your team gets back to closing high-value deals.</strong></p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-dark" href="#contact">Book a free call</a>
+          <a class="btn btn-soft" href="#how">See how it works</a>
+        </div>
     </div>
   </section>
 
   <section class="gutter" id="how">
-    <div class="col">
-      <p class="eyebrow">The Outreach Agent</p>
-      <h2>Four jobs. One Agent.</h2>
-      <div class="rows">
-        <div class="row"><span class="k">01 · Find</span><p class="v">Spots the businesses in your chosen city or region that are most likely to buy from you.</p></div>
-        <div class="row"><span class="k">02 · Enrich</span><p class="v">Learns everything about each one: who to contact, their phone, email and address, why they are hot, and how to sell to them.</p></div>
-        <div class="row"><span class="k">03 · Email</span><p class="v">Writes a personal email to each lead and sends it in your name. No copy-paste blasts, and you approve the tone.</p></div>
-        <div class="row"><span class="k">04 · Print &amp; post</span><p class="v">On request, a personalised brochure or letter lands on your best leads’ desks as a printed hard copy.</p></div>
+    <div class="wrap split">
+      <div class="side">
+        <p class="eyebrow">The Outreach Agent</p>
+        <h2>Four jobs. One Agent.</h2>
+      </div>
+      <div class="main">
+        <div class="rows">
+          <div class="row"><span class="k">01 · Find</span><p class="v">Spots the businesses in your chosen city or region that are most likely to buy from you.</p></div>
+          <div class="row"><span class="k">02 · Enrich</span><p class="v">Learns everything about each one: who to contact, their phone, email and address, why they are hot, and how to sell to them.</p></div>
+          <div class="row"><span class="k">03 · Email</span><p class="v">Writes a personal email to each lead and sends it in your name. No copy-paste blasts, and you approve the tone.</p></div>
+          <div class="row"><span class="k">04 · Print &amp; post</span><p class="v">On request, a personalised brochure or letter lands on your best leads’ desks as a printed hard copy.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="gutter" id="for">
-    <div class="col">
-      <p class="eyebrow">Built for</p>
-      <h2>Premium B2B businesses, where one new client pays for months of work.</h2>
-      <p class="lede">Firms with large deal sizes and a small number of buyers who really matter. The Agent finds those few, learns what they need, and gets you in front of them.</p>
+    <div class="wrap split">
+      <div class="side">
+        <p class="eyebrow">Built for</p>
+        <h2>Premium B2B businesses.</h2>
+      </div>
+      <div class="main">
+        <p class="big">Where one new client pays for months of work.</p>
+        <p class="lede">Firms with large deal sizes and a small number of buyers who really matter. The Agent finds those few, learns what they need, and gets you in front of them.</p>
+      </div>
     </div>
   </section>
 
   <section class="gutter" id="example">
-    <div class="col">
-      <p class="eyebrow">Example lead</p>
-      <h2 id="ex-title">An export freight forwarder wants more shippers.</h2>
-      <div class="tabs" role="tablist" aria-label="Example leads">
-        <button class="tab" role="tab" id="tab-freight" aria-selected="true" data-ex="freight">Freight forwarder</button>
-        <button class="tab" role="tab" id="tab-solar" aria-selected="false" data-ex="solar">Solar installer</button>
-        <button class="tab" role="tab" id="tab-gift" aria-selected="false" data-ex="gift">Corporate gifting</button>
-      </div>
-      <p class="brief" id="ex-brief">Brief: “Export freight forwarder in Kochi. Find exporters who ship every month.” This is the kind of lead the Agent hands back.</p>
-      <div class="lead" role="tabpanel" aria-live="polite">
-        <div class="lead-head">
-          <div><h3 id="lc-name">Sample Spice Exports Pvt Ltd</h3><p id="lc-sub">Spice exporter · ships to the Gulf and Europe</p></div>
-          <span class="hot">HOT LEAD</span>
+    <div class="wrap split">
+      <div class="side">
+        <p class="eyebrow">Example lead</p>
+        <h2 id="ex-title">An export freight forwarder wants more shippers.</h2>
+        <div class="tabs" role="tablist" aria-label="Example leads">
+          <button class="tab" role="tab" id="tab-freight" aria-selected="true" data-ex="freight">Freight forwarder</button>
+          <button class="tab" role="tab" id="tab-solar" aria-selected="false" data-ex="solar">Solar installer</button>
+          <button class="tab" role="tab" id="tab-gift" aria-selected="false" data-ex="gift">Corporate gifting</button>
         </div>
-        <dl>
-          <div class="f"><dt>Contact</dt><dd id="lc-contact">Export &amp; Logistics Manager</dd></div>
-          <div class="f"><dt>Phone</dt><dd>+91 98XXX XXXXX</dd></div>
-          <div class="f"><dt>Email</dt><dd id="lc-email">exports@samplespice.example</dd></div>
-          <div class="f"><dt>Why hot</dt><dd id="lc-why">Ships every month, has just added new buyers in Europe, and uses more than one forwarder, so they are actively comparing rates.</dd></div>
-          <div class="f"><dt>How to sell</dt><dd id="lc-how">Open with a rate comparison on their busiest lane, Kochi to Jebel Ali. Offer to handle export documents and suggest one trial shipment.</dd></div>
-        </dl>
+        <p class="brief" id="ex-brief">Brief: “Export freight forwarder in Kochi. Find exporters who ship every month.” This is the kind of lead the Agent hands back.</p>
       </div>
-      <p class="note">Sample data for illustration only. Not a real company.</p>
+      <div class="main">
+        <div class="lead" role="tabpanel" aria-live="polite">
+          <div class="lead-head">
+            <div><h3 id="lc-name">Sample Spice Exports Pvt Ltd</h3><p id="lc-sub">Spice exporter · ships to the Gulf and Europe</p></div>
+            <span class="hot">HOT LEAD</span>
+          </div>
+          <dl>
+            <div class="f"><dt>Contact</dt><dd id="lc-contact">Export &amp; Logistics Manager</dd></div>
+            <div class="f"><dt>Phone</dt><dd>+91 98XXX XXXXX</dd></div>
+            <div class="f"><dt>Email</dt><dd id="lc-email">exports@samplespice.example</dd></div>
+            <div class="f"><dt>Why hot</dt><dd id="lc-why">Ships every month, has just added new buyers in Europe, and uses more than one forwarder, so they are actively comparing rates.</dd></div>
+            <div class="f"><dt>How to sell</dt><dd id="lc-how">Open with a rate comparison on their busiest lane, Kochi to Jebel Ali. Offer to handle export documents and suggest one trial shipment.</dd></div>
+          </dl>
+        </div>
+        <p class="note">Sample data for illustration only. Not a real company.</p>
+      </div>
     </div>
   </section>
 
   <section class="gutter" id="agents">
-    <div class="col">
-      <p class="eyebrow">The Agents</p>
-      <h2>One Agent live. More on the way.</h2>
-      <div class="rows">
-        <div class="row"><span class="k">Agent 01</span><p class="v">Outreach Agent <span class="tag live">Live</span></p></div>
-        <div class="row"><span class="k">Agent 02</span><p class="v">In the workshop. The next Agent is being built right now. <span class="tag">Coming soon</span></p></div>
-        <div class="row"><span class="k">Agent 03</span><p class="v">Your boring job. Have a task your team hates doing? <a href="#suggest" id="suggestLink">Suggest it</a> and it might become the next Agent.</p></div>
+    <div class="wrap split">
+      <div class="side">
+        <p class="eyebrow">The Agents</p>
+        <h2>One Agent live. More on the way.</h2>
+      </div>
+      <div class="main">
+        <div class="rows">
+          <div class="row"><span class="k">Agent 01</span><p class="v">Outreach Agent <span class="tag live">Live</span></p></div>
+          <div class="row"><span class="k">Agent 02</span><p class="v">In the workshop. The next Agent is being built right now. <span class="tag">Coming soon</span></p></div>
+          <div class="row"><span class="k">Agent 03</span><p class="v">Your boring job. Have a task your team hates doing? <a href="#suggest" id="suggestLink">Suggest it</a> and it might become the next Agent.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="gutter cta" id="contact">
-    <div class="narrow">
-      <h2>Let the Agent do the boring work.</h2>
-      <p class="sub">You close the deals. Book a free call and we will show you what it would find for your business.</p>
-
+    <div class="wrap split">
+      <div class="side">
+        <p class="eyebrow">Book a call</p>
+        <h2>Let the Agent do the boring work.</h2>
+        <p class="sub">You close the deals. Book a free call and we will show you what it would find for your business.</p>
+        <p class="based">Based in Calicut, Kerala.</p>
+      </div>
+      <div class="main">
       <form class="call" id="callForm" novalidate>
         <div class="two">
           <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -245,12 +273,14 @@ footer{padding-block:22px}
             <label class="chk"><input type="checkbox" id="i-print" value="Printed Brochure"><span>Print &amp; post</span></label>
           </div>
         </div>
-        <div class="field"><label for="f-msg">What do you sell, and who buys it?</label><textarea id="f-msg" name="message" placeholder="e.g. We install rooftop solar and want factories in Coimbatore."></textarea></div>
-        <div class="field" id="suggest"><label for="f-suggest">Suggest a boring job (optional)</label><textarea id="f-suggest" name="suggestion" placeholder="e.g. Every week we copy invoice details into our accounts by hand."></textarea></div>
+        <div class="two">
+          <div class="field"><label for="f-msg">What do you sell, and who buys it?</label><textarea id="f-msg" name="message" placeholder="e.g. We install rooftop solar and want factories in Coimbatore."></textarea></div>
+          <div class="field" id="suggest"><label for="f-suggest">Suggest a boring job (optional)</label><textarea id="f-suggest" name="suggestion" placeholder="e.g. Every week we copy invoice details into our accounts by hand."></textarea></div>
+        </div>
         <div><button class="btn btn-dark" type="submit" id="f-submit">Book a free call</button></div>
         <p class="form-msg" id="formMsg" hidden></p>
       </form>
-      <p class="based">Based in Calicut, Kerala.</p>
+      </div>
     </div>
   </section>
 </main>
