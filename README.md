@@ -1,6 +1,6 @@
-# Boring Agents website
+# Boring Workforce website
 
-Source for www.boringagents.co.in, hosted on GitHub Pages.
+Source for www.boringworkforce.com, hosted on GitHub Pages.
 
 - `index.html`: the whole site.
 - `CNAME`: the custom domain.

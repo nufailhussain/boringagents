@@ -326,7 +326,7 @@ footer{padding-block:22px}
     }
     var interests = Array.prototype.map.call(form.querySelectorAll('.chk input:checked'), function(c){ return c.value; }).join(', ');
     var body = new URLSearchParams({name:val('f-name'),business:val('f-biz'),phone:val('f-phone'),email:val('f-email'),city:val('f-city'),interests:interests,message:val('f-msg'),suggestion:val('f-suggest')});
-    if(!SHEET_ENDPOINT || !/(^|\.)boringagents\.co\.in$|github\.io$/.test(location.hostname)){
+    if(!SHEET_ENDPOINT || !/(^|\.)boringworkforce\.com$|(^|\.)boringagents\.co\.in$|github\.io$/.test(location.hostname)){
       msg.textContent = 'Thanks, ' + val('f-name') + '. This is a preview, so nothing was sent. On the live site, this request goes straight into the Boring Workforce leads sheet.';
       msg.hidden = false; return;
     }
