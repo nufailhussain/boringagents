@@ -1,8 +1,8 @@
 /**
- * Boring Agents: save website form leads to Google Sheets.
+ * Boring Workforce: save website form leads to Google Sheets.
  *
  * Setup (about 3 minutes):
- * 1. Open the "Boring Agents - Website Leads" sheet.
+ * 1. Open the "Boring Workforce - Website Leads" sheet.
  * 2. Extensions > Apps Script. Delete what is there and paste this whole file. Save.
  * 3. Deploy > New deployment > Select type: Web app.
  *      Execute as: Me
